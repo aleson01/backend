@@ -19,6 +19,7 @@ import { SendOrderController } from './controllers/order/SendOrderController';
 import { ListOrdersController } from './controllers/order/ListOrdersController';
 import { DetailOrderController } from './controllers/order/DetailOrderController';
 import { FinishOrderController } from './controllers/order/FinishOrderController';
+import {ListOrderTrueController } from './controllers/order/ListOrderTrueController'
 
 const router = express.Router();
 
@@ -46,6 +47,7 @@ router.post('/order/add', isAuthenticated, new AddItemController().handle )
 router.delete('/order/remove', isAuthenticated, new RemoveItemController().handle )
 router.put('/order/send', isAuthenticated, new SendOrderController().handle )
 router.get('/orders', isAuthenticated, new ListOrdersController().handle )
+router.get('/order/openOrder', isAuthenticated, new ListOrderTrueController().handle )
 router.get('/order/detail', isAuthenticated, new DetailOrderController().handle )
 router.put('/order/finish', isAuthenticated, new FinishOrderController().handle )
 
