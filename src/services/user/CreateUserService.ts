@@ -11,6 +11,10 @@ interface CreateUserProps{
 class CreateUserService{
     async execute({name,email,password,level}:CreateUserProps){
 
+        
+        if(!email){
+            throw new Error("Email Incorreto!")
+        }
         // Verifica se email já existe
         const existeEmail = await prismaClient.user.findFirst({
             where:{
