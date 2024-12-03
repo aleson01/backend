@@ -5,14 +5,11 @@ interface CreateUserProps{
     name: string;
     email:string;
     password:string;
+    level:string;
 }
 
 class CreateUserService{
-    async execute({name,email,password}:CreateUserProps){
-
-        if(!email){
-            throw new Error("Email Incorreto")
-        }
+    async execute({name,email,password,level}:CreateUserProps){
 
         // Verifica se email já existe
         const existeEmail = await prismaClient.user.findFirst({
@@ -30,8 +27,9 @@ class CreateUserService{
         const usuario = await prismaClient.user.create({
             data:{
                 name,
+                email,
                 password:passwordHash,
-                email
+                level
             }
         })
         return usuario

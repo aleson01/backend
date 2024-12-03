@@ -32,7 +32,8 @@ class AuthUserService{
     const token = sign(
       {
         name: user.name,
-        email: user.email
+        email: user.email,
+        level: user.level
       },
       process.env.SECRET_KEY,
       {
@@ -46,6 +47,7 @@ class AuthUserService{
       id: user.id,
       name: user.name,
       email: user.email,
+      level: user.level,
       token: token
      }
   }
