@@ -11,11 +11,6 @@ interface CreateUserProps{
 class CreateUserService{
     async execute({name,email,password,level}:CreateUserProps){
 
-<<<<<<< HEAD
-        //verifica se ele nao enviou um email
-=======
-        
->>>>>>> d8b25ea9123ecc72532bb25dd0b71aab83436d23
         if(!email){
             throw new Error("Email Incorreto!")
         }
@@ -36,13 +31,9 @@ class CreateUserService{
             data:{
                 name,
                 email,
-<<<<<<< HEAD
-                level,
-                password:passwordHash
-=======
+
                 password:passwordHash,
                 level
->>>>>>> d8b25ea9123ecc72532bb25dd0b71aab83436d23
             }
         })
         return usuario
