@@ -27,8 +27,8 @@ const upload = multer(uploadConfig.upload("./tmp"))
 
 // ************************
 // ROTAS USUARIO
-router.post('/usuario', new CreateUserController().handle);
-router.get('/usuario', new ListUserController().handle);
+router.post('/user', new CreateUserController().handle);
+router.get('/user', new ListUserController().handle);
 router.post('/session', new AuthUserController().handle);
 router.get('/me', isAuthenticated, new DetailuserController().handle);
 
