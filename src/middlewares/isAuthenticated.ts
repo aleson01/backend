@@ -34,6 +34,7 @@ export function isAuthenticated(
     req.user_id = sub;
     
     req.headers['level'] = level;
+    console.log(req.headers.level)
     
     return next();
 
