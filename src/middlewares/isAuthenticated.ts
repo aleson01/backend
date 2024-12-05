@@ -1,8 +1,10 @@
 import {NextFunction, Request, Response} from 'express'
+import { request } from 'http';
 import { verify } from 'jsonwebtoken'
 
 interface Payload{
   sub: string;
+  level: string;
 }
 
 export function isAuthenticated(
@@ -23,7 +25,7 @@ export function isAuthenticated(
   
   try{
     //Validar esse token.
-    const { sub } = verify(
+    const { sub,level } = verify(
       token,
       process.env.SECRET_KEY
     ) as Payload;
@@ -31,6 +33,7 @@ export function isAuthenticated(
     //Recuperar o id do token e colocar dentro de uma variavel user_id dentro do req.
     req.user_id = sub;
     
+    req.headers['level'] = level;
     
     return next();
 

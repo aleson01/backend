@@ -2,12 +2,21 @@ import express ,{ Request, Response} from "express";
 import { ListUserService } from "../../services/user/ListUserService";
 
 class ListUserController{
+    
     async handle(req:Request, res:Response){
-        const createUserService = new ListUserService();
+        if(req.headers.level ==="adm"){
+            const createUserService = new ListUserService();
 
-        const user = await createUserService.execute();
+            const user = await createUserService.execute();
 
-        return res.json(user);
+            return res.json(user);
+
+        }
+        else{
+            console.log("não autorizado");
+            return
+        }
+        
     }
 }
 
